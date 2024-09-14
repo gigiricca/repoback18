@@ -5,6 +5,7 @@ const productoController = require("../controllers/productoController");
 const categoriaController = require('../controllers/categoriaController.js');
 const usuarioController = require('../controllers/usuarioController.js');
 const caracteristicaController = require('../controllers/caracteristicaController.js');
+const reservaController = require('../controllers/reservaController.js');
 
 // Rutas para productos
 router.get("/productos", productoController.getAllProductos); //Query params page y pageSize
@@ -33,5 +34,11 @@ router.get('/caracteristicas', caracteristicaController.getAllCaracteristicas);
 //Rutas para favoritos
 router.post("/favoritos", usuarioController.toggleFavorito);
 router.get("/favoritos/:usuarioId", usuarioController.obtenerFavoritos);
+
+// Ruta para obtener el detalle de reserva temporal
+router.post('/detalle', reservaController.obtenerDetalleReserva);
+
+// Ruta para confirmar la reserva
+router.post('/confirmar', reservaController.confirmarReserva);
 
 module.exports = router;
