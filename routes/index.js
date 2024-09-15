@@ -40,5 +40,6 @@ router.post('/detalle', reservaController.obtenerDetalleReserva);
 
 // Ruta para confirmar la reserva
 router.post('/confirmar', reservaController.confirmarReserva);
+router.post('/fechasDisponibles', reservaController.obtenerFechasDisponibles);
 
 module.exports = router;
