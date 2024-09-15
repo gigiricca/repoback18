@@ -28,8 +28,16 @@ router.post('/login', usuarioController.login);
 router.get('/usuarios', usuarioController.obtenerUsuarios); 
 router.put('/usuarios/cambiar-rol', usuarioController.cambiarRol);
 
-// Rutas para categorias
+// Rutas para características
+// Obtener todas las características
 router.get('/caracteristicas', caracteristicaController.getAllCaracteristicas);
+// Crear una nueva característica
+router.post('/caracteristicas', caracteristicaController.createCaracteristica);
+// Actualizar una característica
+router.put('/caracteristicas/:id', caracteristicaController.updateCaracteristica);
+// Eliminar una característica
+router.delete('/caracteristicas/:id', caracteristicaController.deleteCaracteristica);
+
 
 //Rutas para favoritos
 router.post("/favoritos", usuarioController.toggleFavorito);
