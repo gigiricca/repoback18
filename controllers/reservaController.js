@@ -35,8 +35,8 @@ exports.confirmarReserva = async (req, res) => {
         
         // Crear la reserva en la base de datos
         const nuevaReserva = await Reserva.create({
-            productoId,
-            usuarioId,
+            producto_id: productoId,
+            usuario_id: usuarioId,
             fecha_reserva: fecha
         });
 
