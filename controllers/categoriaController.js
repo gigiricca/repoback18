@@ -14,11 +14,11 @@ exports.getAllCategorias = async (req, res) => {
 // Crear una categoría
 exports.createCategoria = async (req, res) => {
   try {
-    const { nombre } = req.body;
-    const categoria = await Categoria.create({ nombre });
+    const { titulo, descripcion, imagen } = req.body; // Nuevos campos
+    const categoria = await Categoria.create({ titulo, descripcion, imagen });
     res.status(201).json(categoria);
   } catch (error) {
-    res.status(500).json({ error: "Error al crear categoría" });
+    res.status(500).json({ error: "Error al crear categoría: " + error });
   }
 };
 
@@ -26,7 +26,7 @@ exports.createCategoria = async (req, res) => {
 exports.updateCategoria = async (req, res) => {
   try {
     const { id } = req.params;
-    const { nombre } = req.body;
+    const { titulo, descripcion, imagen } = req.body; // Nuevos campos
 
     const categoria = await Categoria.findByPk(id);
 
@@ -34,11 +34,11 @@ exports.updateCategoria = async (req, res) => {
       return res.status(404).json({ error: "Categoría no encontrada" });
     }
 
-    await categoria.update({ nombre });
+    await categoria.update({ titulo, descripcion, imagen });
 
     res.json(categoria);
   } catch (error) {
-    res.status(500).json({ error: "Error al actualizar categoría" });
+    res.status(500).json({ error: "Error al actualizar categoría: " + error });
   }
 };
 
@@ -56,6 +56,6 @@ exports.deleteCategoria = async (req, res) => {
 
     res.status(204).send(); // No Content
   } catch (error) {
-    res.status(500).json({ error: "Error al borrar categoría" });
+    res.status(500).json({ error: "Error al borrar categoría: " + error });
   }
 };
