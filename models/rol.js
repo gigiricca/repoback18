@@ -11,7 +11,7 @@ const Rol = sequelize.define(
   },
   {
     timestamps: false, // Esto lo mantienes si no quieres los campos createdAt y updatedAt
-    tableName: 'Rol'
+    tableName: 'rol'
   }
 );
 
