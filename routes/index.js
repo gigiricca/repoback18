@@ -46,8 +46,9 @@ router.get("/favoritos/:usuarioId", usuarioController.obtenerFavoritos);
 // Ruta para obtener el detalle de reserva temporal
 router.post('/detalle', reservaController.obtenerDetalleReserva);
 
-// Ruta para confirmar la reserva
+// Ruta para reservas
 router.post('/confirmar', reservaController.confirmarReserva);
 router.post('/fechasDisponibles', reservaController.obtenerFechasDisponibles);
+router.get('/historial/:usuarioId', reservaController.obtenerHistorialReservas);
 
 module.exports = router;

@@ -92,3 +92,35 @@ exports.obtenerFechasDisponibles = async (req, res) => {
         res.status(500).json({ mensaje: 'Error al obtener las fechas disponibles y no disponibles', error });
     }
 };
+
+// Obtener historial de reservas del usuario autenticado
+exports.obtenerHistorialReservas = async (req, res) => {
+    try {
+        const usuarioId = req.params.usuarioId; // Obtener el ID del usuario desde los parámetros de la solicitud
+
+        // Verificar que el ID del usuario esté presente
+        if (!usuarioId) {
+            return res.status(400).json({ mensaje: 'ID de usuario no proporcionado' });
+        }
+
+        // Obtener todas las reservas asociadas al usuario
+        const reservas = await Reserva.findAll({
+            where: {
+                usuario_id: usuarioId
+            },
+            include: [
+                {
+                    model: Producto, // Incluir el producto para obtener sus detalles
+                    attributes: ['nombre', 'descripcion'] // Incluir campos relevantes del producto
+                }
+            ],
+            order: [['fecha_reserva', 'DESC']] // Ordenar por fecha de reserva (más recientes primero)
+        });
+
+        // Retornar las reservas con detalles del producto
+        res.json(reservas);
+    } catch (error) {
+        res.status(500).json({ mensaje: 'Error al obtener el historial de reservas', error });
+    }
+};
+
