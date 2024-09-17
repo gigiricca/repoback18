@@ -79,9 +79,9 @@ exports.obtenerFechasDisponibles = async (req, res) => {
             currentFecha.setDate(currentFecha.getDate() + 1);
         }
 
-        // Retornar las fechas disponibles
-        res.json({ fechasDisponibles });
+        // Retornar las fechas disponibles y no disponibles
+        res.json({ fechasDisponibles, fechasNoDisponibles: fechasReservadas });
     } catch (error) {
-        res.status(500).json({ mensaje: 'Error al obtener las fechas disponibles', error });
+        res.status(500).json({ mensaje: 'Error al obtener las fechas disponibles y no disponibles', error });
     }
 };
