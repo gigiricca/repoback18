@@ -6,6 +6,9 @@ const transporter = nodemailer.createTransport({
     auth: {
         user: 'proyectointegrador631@gmail.com', // Reemplaza con tu email
         pass: 'xfgf vhke cigb nblv' // Reemplaza con tu contraseña o usa un token de app si usas Gmail
+    },
+    tls: {
+      rejectUnauthorized: false
     }
 });
 
