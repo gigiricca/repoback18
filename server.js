@@ -16,7 +16,7 @@ const HOST = '0.0.0.0';  // Permitir acceso desde cualquier red
 sequelize.
   sync({ alter: true })
   .then(() => {
-    app.listen(PORT, () => {
+    app.listen(PORT, HOST, () => {
       console.log(`Servidor escuchando en el puerto ${PORT}`);
     });
   })
