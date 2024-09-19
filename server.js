@@ -9,7 +9,7 @@ app.use(cors());
 
 app.use("/api", routes);
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 8080;
 
 // Sincronizar modelos y luego iniciar el servidor
 sequelize.
